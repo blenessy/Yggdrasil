@@ -1,17 +1,17 @@
 using BinaryBuilder
 
 name = "LMDB"
-version = v"0.9.25"
+version = v"0.9.26"
 
 # No sources, we're just building the testsuite
 sources = [
     ArchiveSource("https://git.openldap.org/openldap/openldap/-/archive/LMDB_$(version)/openldap-LMDB_$(version).tar.gz",
-                  "4f6eebe5ad98c10a75badd106f498ee2249d454352d048c78a49c99c940d4cae"),
+                  "023d0ddb54fe9adb76e4984455d630d73b31cf0078b538211b0effb2f1dc7ce0"),
 ]
 
 # Bash recipe for building across all platforms
 # - CC: mdb_env_close0 segfaults on MacOS because CC is set to gcc in Makefile
-# - rm: remove man files (it does not name sense)
+# - rm: remove man files (it does not make sense)
 # - exeext: Makefile does not support extensions - need to rename execuables manually
 script = raw"""
 cd ${WORKSPACE}/srcdir/openldap-*/libraries/liblmdb
